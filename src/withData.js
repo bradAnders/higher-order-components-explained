@@ -11,15 +11,19 @@ const withData = (WrappedComponent, dataSource) => {
     }
   
     componentDidMount() {
-      fetch(dataSource).then(
-        response => response.json()
-      ).then(
-        data => this.setState({ data: data.slice(0, 3) })
-      );
+      setTimeout(() => {
+        fetch(dataSource)
+          .then(response => response.json())
+          .then(data => this.setState({ data: data.slice(0, 3) }));
+      }, 1500);
     }
 
     render () {
-      return <WrappedComponent data={ this.state.data } { ...this.props } />;
+      return (
+        this.state.data.length < 1 ?
+        <h1>LOADING</h1> :
+        <WrappedComponent data={ this.state.data } { ...this.props } />
+      );
     }
   }
 
