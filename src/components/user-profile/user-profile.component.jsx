@@ -18,4 +18,4 @@ const UserProfile = ({ data, name, email }) => (
   </div>
 );
 
-export default withData(UserProfile, 'https://jsonplaceholder.typicode.com/posts');
+export default withData(UserProfile);
